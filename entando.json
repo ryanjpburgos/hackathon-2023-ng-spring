@@ -1,0 +1,40 @@
+{
+    "microservices": [
+        {
+            "name": "spring-ms",
+            "stack": "spring-boot",
+            "healthCheckPath": "/api/health"
+        }
+    ],
+    "microfrontends": [
+        {
+            "name": "form-renderer",
+            "customElement": "form-renderer",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "form-renderer",
+                "it": "form-renderer"
+            }
+        },
+        {
+            "name": "form-generator",
+            "customElement": "form-generator",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "form-generator",
+                "it": "form-generator"
+            }
+        }
+    ],
+    "svc": [],
+    "name": "hackathon-2023-ng-spring",
+    "version": "0.0.1",
+    "description": "hackathon-2023-ng-spring description",
+    "type": "bundle"
+}
