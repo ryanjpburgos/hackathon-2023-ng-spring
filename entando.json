@@ -17,7 +17,15 @@
             "titles": {
                 "en": "form-renderer",
                 "it": "form-renderer"
-            }
+            },
+            "buildFolder": "dist/form-renderer",
+            "apiClaims": [
+                {
+                    "name": "spring-api",
+                    "type": "internal",
+                    "serviceName": "spring-ms"
+                }
+            ]
         },
         {
             "name": "form-generator",
@@ -29,7 +37,15 @@
             "titles": {
                 "en": "form-generator",
                 "it": "form-generator"
-            }
+            },
+            "buildFolder": "dist/form-generator",
+            "apiClaims": [
+                {
+                    "name": "spring-api",
+                    "type": "internal",
+                    "serviceName": "spring-ms"
+                }
+            ]
         }
     ],
     "svc": [],
