@@ -1,3 +1,5 @@
 <button (click)="makeCall()">Click here</button>
 
-<p>{{simpleText}}</p>
+<!-- <formio src='https://examples.form.io/example'></formio> -->
+
+<form-builder [form]="form" (change)="onChange($event)"></form-builder>

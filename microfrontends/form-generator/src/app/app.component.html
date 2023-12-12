@@ -1,3 +1,19 @@
-<button (click)="makeCall()">Click here</button>
-
-<p>{{simpleText}}</p>
+<div class="container">
+  <div class="row">
+    <form [formGroup]="formBuilderObject">
+      <div class="col-12">
+        <div class="border p-2 mb-3">
+          <form-builder
+            [form]="form"
+            (change)="onChange($event)"
+          ></form-builder>
+        </div>
+      </div>
+      <div class="d-flex col-12 justify-content-end">
+        <button class="btn btn-success" [disabled]="!formBuilderObject.valid" (click)="onSaveForm()">
+          Save Form
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

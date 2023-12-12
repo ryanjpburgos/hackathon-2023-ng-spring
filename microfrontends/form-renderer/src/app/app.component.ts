@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,14 @@ export class AppComponent implements OnChanges {
   configParsed: any;
   name: any;
   title = 'form-renderer';
-  simpleText!: string;
+
+  public form: Object = {
+    components: []
+  };
+
+  onChange(event) {
+
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +33,6 @@ export class AppComponent implements OnChanges {
 
   public makeCall() {
     this.http.get<{payload: string}>(`${this.configParsed['systemParams'].api['spring-api'].url}/api/example`).subscribe((res) => {
-      this.simpleText = res.payload;
     })
   }
 }
