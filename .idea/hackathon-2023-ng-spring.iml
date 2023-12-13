@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/microservices/spring-ms" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/microservices/spring-ms/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/microservices/spring-ms/src/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/microservices/template-be/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/microservices/template-be/src/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/microservices/template-be" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/microservices/template-be/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/microservices/form-be" />
+      <excludeFolder url="file://$MODULE_DIR$/microservices/template-be/target" />
+      <excludeFolder url="file://$MODULE_DIR$/microfrontends" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
