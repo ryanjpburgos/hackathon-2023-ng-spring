@@ -1,8 +1,0 @@
-com/entando/example/springms/record/TemplateRecord.class
-com/entando/example/springms/entity/TemplateEntity.class
-com/entando/example/springms/service/mapper/TemplateMapper.class
-com/entando/example/springms/service/impl/TemplateServiceImpl.class
-com/entando/example/springms/repository/TemplateRepository.class
-com/entando/example/springms/SpringMsApplication.class
-com/entando/example/springms/controller/TemplateController.class
-com/entando/example/springms/service/TemplateService.class

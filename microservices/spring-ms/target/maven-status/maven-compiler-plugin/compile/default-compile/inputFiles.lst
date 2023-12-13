@@ -1,9 +1,0 @@
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/controller/TemplateController.java
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/SpringMsApplication.java
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/record/TemplateRecord.java
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/entity/TemplateEntity.java
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/entity/FormEntity.java
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/service/TemplateService.java
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/service/impl/TemplateServiceImpl.java
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/service/mapper/TemplateMapper.java
-/home/matteo/lavoro/progetti/entando-bundle/hackathon-2023-ng-spring/microservices/spring-ms/src/main/java/com/entando/example/springms/repository/TemplateRepository.java
