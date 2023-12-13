@@ -12,6 +12,9 @@ import { ApiService } from './shared/services/api.service';
 export class AppComponent implements OnChanges {
   @Input() config!: string;
   public formBuilderObject: FormGroup = new FormGroup({
+    title: new FormControl(),
+    name: new FormControl(),
+    path: new FormControl(),
     entandoForm: new FormControl('', [Validators.required]),
   });
   public form: Object = {
@@ -22,7 +25,7 @@ export class AppComponent implements OnChanges {
 
   constructor(private apiService: ApiService) {}
 
-  ngOnChanges(changes: SimpleChanges) {
+  public ngOnChanges(changes: SimpleChanges) {
     if (changes['config']) {
       this.configParsed = JSON.parse(this.config);
       this.apiService.config = this.configParsed;
@@ -30,14 +33,17 @@ export class AppComponent implements OnChanges {
   }
 
   public onChange(event): void {
+    console.log(event)
     this.formBuilderObject.get('entandoForm').setValue(event.form);
+
   }
 
   public onSaveForm(): void {
-    this.apiService
-      .saveForm(this.formBuilderObject.value)
-      .subscribe((res) => {
-        console.log(res)
-      });
+    console.log(this.formBuilderObject.value)
+    // this.apiService
+    //   .saveForm(this.formBuilderObject.value)
+    //   .subscribe((res) => {
+    //     console.log(res)
+    //   });
   }
 }
