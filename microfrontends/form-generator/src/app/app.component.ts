@@ -1,33 +1,49 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MfeConfigModel } from 'src/app/shared/models/mfe-config.model';
+import { ApiService } from './shared/services/api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnChanges {
-  @Input() config!: any;
-  configParsed: any;
-  name: any;
-  title = 'form-generator';
-  simpleText!: string;
+  @Input() config!: string;
+  public formBuilderObject: FormGroup = new FormGroup({
+    title: new FormControl(),
+    name: new FormControl(),
+    path: new FormControl(),
+    entandoForm: new FormControl('', [Validators.required]),
+  });
+  public form: Object = {
+    components: [],
+  };
 
-  constructor(private http: HttpClient) {}
+  private configParsed: MfeConfigModel;
 
-  ngOnChanges(changes: SimpleChanges) {
+  constructor(private apiService: ApiService) {}
+
+  public ngOnChanges(changes: SimpleChanges) {
     if (changes['config']) {
-      console.log("config changes ", this.config)
       this.configParsed = JSON.parse(this.config);
-      this.name = (this.configParsed && this.configParsed.params) ? this.configParsed.params.name : "";
-      console.log("params ", this.name)
+      this.apiService.config = this.configParsed;
     }
   }
 
+  public onChange(event): void {
+    console.log(event)
+    this.formBuilderObject.get('entandoForm').setValue(event.form);
 
-  public makeCall() {
-    this.http.get<{payload: string}>(`${this.configParsed['systemParams'].api['spring-api'].url}/api/example`).subscribe((res) => {
-      this.simpleText = res.payload;
-    })
+  }
+
+  public onSaveForm(): void {
+    console.log(this.formBuilderObject.value)
+    // this.apiService
+    //   .saveForm(this.formBuilderObject.value)
+    //   .subscribe((res) => {
+    //     console.log(res)
+    //   });
   }
 }
