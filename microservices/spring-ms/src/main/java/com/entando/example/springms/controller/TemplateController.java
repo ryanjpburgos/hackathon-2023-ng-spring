@@ -24,7 +24,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/entando-forms")
 public class TemplateController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class TemplateController {
     private final Logger log = LoggerFactory.getLogger(TemplateController.class);
 
     @CrossOrigin
-    @GetMapping("/entando-forms/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<TemplateRecord> getExample(@PathVariable Long id) {
         log.debug("REST request to get the template with id {}", id);
 
@@ -44,7 +44,7 @@ public class TemplateController {
     }
 
     @CrossOrigin
-    @PostMapping("/template")
+    @PostMapping
     public ResponseEntity<TemplateRecord> createContact(@RequestBody TemplateRecord template) throws URISyntaxException {
         log.debug("REST request to create a NEW template: {}", template );
 
@@ -56,7 +56,7 @@ public class TemplateController {
 
 
     @CrossOrigin
-    @PutMapping("/entando-forms/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<TemplateRecord> updateContact(@PathVariable(value = "id") final Long id, @RequestBody TemplateRecord contact) {
         log.debug("REST request to update template: {}", id);
 
@@ -73,7 +73,7 @@ public class TemplateController {
     }
 
     @CrossOrigin
-    @GetMapping("/templates")
+    @GetMapping
     public ResponseEntity<List<TemplateRecord>> getAllTemplates(Pageable pageable) {
         log.debug("REST request to get all Templates");
 
