@@ -21,7 +21,6 @@ public class FormEntity {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-
     @ManyToOne
     @JoinColumn(name="template_id", nullable=false)
     private TemplateEntity templateId;

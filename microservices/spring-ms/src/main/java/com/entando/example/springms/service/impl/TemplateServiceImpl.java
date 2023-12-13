@@ -6,6 +6,9 @@ import com.entando.example.springms.record.TemplateRecord;
 import com.entando.example.springms.repository.TemplateRepository;
 import com.entando.example.springms.service.TemplateService;
 import com.entando.example.springms.service.mapper.TemplateMapper;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -45,8 +48,16 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
     @Override
-    public Page<TemplateRecord> getAllContacts(Pageable pageable) {
+    public Page<TemplateRecord> getAllTemplates(Pageable pageable) {
         return repository.findAll(pageable).map(templateMapper::toRecord);
+    }
+
+    @Override
+    public List<TemplateRecord> getAllTemplates() {
+        return repository.findAll()
+                .stream()
+                .map(t -> templateMapper.toRecord(t))
+                .collect(Collectors.toList());
     }
 
     @Override

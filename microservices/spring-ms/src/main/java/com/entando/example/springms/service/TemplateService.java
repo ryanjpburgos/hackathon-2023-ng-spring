@@ -2,6 +2,7 @@ package com.entando.example.springms.service;
 
 
 import com.entando.example.springms.record.TemplateRecord;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,7 +17,9 @@ public interface TemplateService {
 
     TemplateRecord update(TemplateRecord contactRecord);
 
-    Page<TemplateRecord> getAllContacts(Pageable pageable);
+    Page<TemplateRecord> getAllTemplates(Pageable pageable);
+
+    List<TemplateRecord> getAllTemplates();
 
     boolean exists(Long id);
 }
