@@ -60,10 +60,10 @@ public class TemplateController {
     public ResponseEntity<TemplateRecord> updateTemplate(@PathVariable(value = "id") final Long id, @RequestBody TemplateRecord contact) {
         log.debug("REST request to update template: {}", id);
 
-        if(id == null || !Objects.equals(id, contact.id())) {
+        if (id == null || !Objects.equals(id, contact.id())) {
             return ResponseEntity.badRequest().build();
         }
-        if(!service.exists(id)) {
+        if (!service.exists(id)) {
             return ResponseEntity.notFound().build();
         }
 
@@ -74,7 +74,7 @@ public class TemplateController {
 
     @CrossOrigin
     @GetMapping
-    public ResponseEntity<List<TemplateRecord>> getAllTemplates(Pageable pageable) {
+    public ResponseEntity<List<TemplateRecord>> getAllTemplates() {
         log.debug("REST request to get all Templates");
 
         final List<TemplateRecord> templates = service.getAllTemplates();
