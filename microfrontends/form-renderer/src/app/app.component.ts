@@ -1,32 +1,40 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { MfeConfigModel } from './shared/models/mfe-config.model';
+import { ApiService } from './shared/services/api.service';
+import { FormioForm } from '@formio/angular';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnChanges {
-  @Input() config !: string;
-  configParsed: any;
-  name: any;
-  title = 'form-renderer';
-  simpleText!: string;
+  @Input() config!: string;
 
-  constructor(private http: HttpClient) {}
+  public form$: Observable<FormioForm> = this.apiService.getForm(); 
 
-  ngOnChanges(changes: SimpleChanges) {
+  private configParsed: MfeConfigModel;
+
+  constructor(private apiService: ApiService) {
+    fetch('https://examples.form.io/example')
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  }
+
+  public ngOnChanges(changes: SimpleChanges) {
     if (changes['config']) {
-      console.log("config changes ", this.config)
       this.configParsed = JSON.parse(this.config);
-      this.name = (this.configParsed && this.configParsed.params) ? this.configParsed.params.name : "";
-      console.log("params ", this.name)
+      this.apiService.config = this.configParsed;
     }
   }
 
-  public makeCall() {
-    this.http.get<{payload: string}>(`${this.configParsed['systemParams'].api['spring-api'].url}/api/example`).subscribe((res) => {
-      this.simpleText = res.payload;
-    })
+  public onSubmit(event) {
+    console.log(event)
   }
 }

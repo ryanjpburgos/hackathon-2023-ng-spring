@@ -1,3 +1,7 @@
-<button (click)="makeCall()">Click here</button>
-
-<p>{{simpleText}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <formio *ngIf="form$ | async as form" [form]="form" (submit)="onSubmit($event)"></formio>
+    </div>
+  </div>
+</div>

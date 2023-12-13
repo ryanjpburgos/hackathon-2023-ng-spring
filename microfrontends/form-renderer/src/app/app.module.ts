@@ -3,6 +3,8 @@ import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormioModule } from '@formio/angular';
+
 
 @NgModule({
   declarations: [
@@ -10,7 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormioModule
   ],
   providers: []
 })
