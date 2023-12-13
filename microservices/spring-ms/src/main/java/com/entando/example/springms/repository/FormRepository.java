@@ -1,6 +1,8 @@
 package com.entando.example.springms.repository;
 
 import com.entando.example.springms.entity.FormEntity;
+import com.entando.example.springms.entity.TemplateEntity;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.repository.CrudRepository;
@@ -12,5 +14,7 @@ public interface FormRepository extends CrudRepository<FormEntity, UUID>,
     Optional<FormEntity> findOneById(Long id);
 
     boolean existsById(Long id);
+
+    List<FormEntity> findAll();
 
 }

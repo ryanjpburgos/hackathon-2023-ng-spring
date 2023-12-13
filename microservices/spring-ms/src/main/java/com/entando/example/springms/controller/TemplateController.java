@@ -43,6 +43,7 @@ public class TemplateController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @CrossOrigin
     @PostMapping("/template")
     public ResponseEntity<TemplateRecord> createContact(@RequestBody TemplateRecord template) throws URISyntaxException {
         log.debug("REST request to create a NEW template: {}", template );
@@ -54,6 +55,7 @@ public class TemplateController {
     }
 
 
+    @CrossOrigin
     @PutMapping("/entando-forms/{id}")
     public ResponseEntity<TemplateRecord> updateContact(@PathVariable(value = "id") final Long id, @RequestBody TemplateRecord contact) {
         log.debug("REST request to update template: {}", id);
@@ -70,12 +72,12 @@ public class TemplateController {
         return ResponseEntity.ok().body(savedContact);
     }
 
+    @CrossOrigin
     @GetMapping("/templates")
     public ResponseEntity<List<TemplateRecord>> getAllTemplates(Pageable pageable) {
         log.debug("REST request to get all Templates");
 
         final List<TemplateRecord> templates = service.getAllTemplates();
-
         return ResponseEntity.ok().body(templates);
     }
 
