@@ -34,7 +34,7 @@ public class TemplateController {
 
     @CrossOrigin
     @GetMapping("/{id}")
-    public ResponseEntity<TemplateRecord> getExample(@PathVariable Long id) {
+    public ResponseEntity<TemplateRecord> getTemplate(@PathVariable Long id) {
         log.debug("REST request to get the template with id {}", id);
 
         return service
@@ -45,7 +45,7 @@ public class TemplateController {
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity<TemplateRecord> createContact(@RequestBody TemplateRecord template) throws URISyntaxException {
+    public ResponseEntity<TemplateRecord> createTemplate(@RequestBody TemplateRecord template) throws URISyntaxException {
         log.debug("REST request to create a NEW template: {}", template );
 
         TemplateRecord created = service.save(template);
@@ -57,7 +57,7 @@ public class TemplateController {
 
     @CrossOrigin
     @PutMapping("/{id}")
-    public ResponseEntity<TemplateRecord> updateContact(@PathVariable(value = "id") final Long id, @RequestBody TemplateRecord contact) {
+    public ResponseEntity<TemplateRecord> updateTemplate(@PathVariable(value = "id") final Long id, @RequestBody TemplateRecord contact) {
         log.debug("REST request to update template: {}", id);
 
         if(id == null || !Objects.equals(id, contact.id())) {
