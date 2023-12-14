@@ -3,14 +3,15 @@ package com.entando.example.springms.controller;
 import com.entando.example.springms.record.FormRecord;
 import com.entando.example.springms.record.TemplateRecord;
 import com.entando.example.springms.service.FormService;
+import com.entando.example.springms.service.TemplateService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,6 +31,9 @@ public class FormController {
     @Autowired
     private FormService service;
 
+    @Autowired
+    private TemplateService templateService;
+
     private final Logger log = LoggerFactory.getLogger(FormController.class);
 
 
@@ -46,13 +50,20 @@ public class FormController {
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity<FormRecord> createForm(@RequestBody FormRecord template) throws URISyntaxException {
-        log.debug("REST request to create a NEW form: {}", template );
+    public ResponseEntity<FormRecord> createForm(@RequestBody FormRecord form) throws URISyntaxException {
+        log.debug("REST request to create a NEW form: {}", form );
 
-        FormRecord created = service.save(template);
+        Optional<TemplateRecord> template = templateService.getTemplate(
+                form.templateid());
+        if (template.isPresent()) {
+            FormRecord created = service.save(form);
+            return ResponseEntity
+                    .created(new URI("/api/contacts/" + created.id()))
+                    .body(created);
+        }
         return ResponseEntity
-                .created(new URI("/api/contacts/" + created.id()))
-                .body(created);
+                .badRequest()
+                .build();
     }
 
     @CrossOrigin
@@ -66,17 +77,17 @@ public class FormController {
 
     @CrossOrigin
     @PutMapping("/{id}")
-    public ResponseEntity<FormRecord> updatForms(@PathVariable(value = "id") final Long id, @RequestBody FormRecord contact) {
+    public ResponseEntity<FormRecord> updateForms(@PathVariable(value = "id") final Long id, @RequestBody FormRecord form) {
         log.debug("REST request to update a form: {}", id);
 
-        if (id == null || !Objects.equals(id, contact.id())) {
+        if (id == null || !Objects.equals(id, form.id())) {
             return ResponseEntity.badRequest().build();
         }
         if (!service.exists(id)) {
             return ResponseEntity.notFound().build();
         }
 
-        FormRecord savedContact = service.update(contact);
+        FormRecord savedContact = service.update(form);
 
         return ResponseEntity.ok().body(savedContact);
     }

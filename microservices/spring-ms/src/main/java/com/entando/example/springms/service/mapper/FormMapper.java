@@ -16,8 +16,8 @@ public class FormMapper {
 
     public FormRecord toRecord(FormEntity entity) {
         return new FormRecord(entity.getId(),
-                entity.getTemplateId(),
-                entity.getData(),
+                entity.getTemplateid().getId(),
+                entity.getPayload(),
                 entity.getUserid());
     }
 

@@ -16,7 +16,7 @@ public class TemplateMapper {
 
     public TemplateRecord toRecord(TemplateEntity entity) {
         return new TemplateRecord(entity.getId(),
-                entity.getTemplate(),
+                entity.getPayload(),
                 entity.getUserid());
     }
 

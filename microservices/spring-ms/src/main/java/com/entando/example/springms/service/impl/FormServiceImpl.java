@@ -1,6 +1,7 @@
 package com.entando.example.springms.service.impl;
 
 import com.entando.example.springms.entity.FormEntity;
+import com.entando.example.springms.entity.TemplateEntity;
 import com.entando.example.springms.record.FormRecord;
 import com.entando.example.springms.repository.FormRepository;
 import com.entando.example.springms.service.FormService;
@@ -29,7 +30,10 @@ public class FormServiceImpl implements FormService {
 
     @Override
     public FormRecord save(FormRecord form) {
+        TemplateEntity ft = new TemplateEntity();
         FormEntity entity = formMapper.toEntity(form);
+        ft.setId(form.templateid());
+        entity.setTemplateid(ft);
         formRepository.save(entity);
         return formMapper.toRecord(entity);
     }
